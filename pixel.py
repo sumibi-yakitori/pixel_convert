@@ -72,6 +72,7 @@ def make_dot(src, k=3, scale=2, color=True, blur=0, erode=0, alpha=True, to_tw=T
         a = np.ones(r.shape, dtype=np.uint8) * 255
         a[0, 0] = 0
         result = cv2.merge((r, g, b, a))
+    result = cv2.resize(result, (d_w, d_h), interpolation=cv2.INTER_NEAREST)
     colors = []
     for res_c in center:
         color_code = '#{0:02x}{1:02x}{2:02x}'.format(res_c[2], res_c[1], res_c[0])
